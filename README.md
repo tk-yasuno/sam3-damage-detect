@@ -1,4 +1,4 @@
-# SAM3 Damage Detector v0.3
+# SAM3 Damage Detector with Signboard Privacy Masking
 
 **AI-Powered Concrete Structure Damage Detection with Privacy Protection**
 
