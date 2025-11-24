@@ -42,10 +42,13 @@ wheels/
 .DS_Store
 Thumbs.db
 
-# Results
-results/*.png
-results/*.jpg
-results/*.json
+# Data (test images - too large for git)
+data/
+!data/.gitkeep
+
+# Results (generated outputs - too large for git)
+results/
+!results/.gitkeep
 
 # Models (except README)
 models/*.pth
