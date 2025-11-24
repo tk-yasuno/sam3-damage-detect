@@ -106,11 +106,9 @@ flowchart TB
 - GPU メモリ 8GB以上（16GB推奨）
 - **動作確認済み**: NVIDIA GeForce RTX 4060 Ti (16GB)
 
-## 🚀 セットアップ（Conda不要）
+## 🚀 セットアップ
 
 ### 1. 環境構築
-
-**既存のPython環境で動作します！**
 
 ```powershell
 # 必要パッケージのインストール
@@ -119,8 +117,6 @@ pip install -r requirements.txt
 # PyTorch（CUDA 11.8対応）
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
-
-> ℹ️ **注意**: 既存のPyTorch仮想環境がある場合は自動的に使用されます
 
 ### 2. SAMモデルのダウンロード
 
