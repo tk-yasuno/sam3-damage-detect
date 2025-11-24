@@ -1,0 +1,83 @@
+GitHub Repository Description
+=============================
+
+Short Description (160 chars max):
+----------------------------------
+AI-powered concrete damage detection using SAM with privacy protection. Automatic rust detection, pattern recognition, and signboard blur masking.
+
+
+Long Description (For GitHub "About" section):
+----------------------------------------------
+🔍 SAM3 Damage Detector v0.3 - AI-Powered Infrastructure Inspection
+
+GPU-optimized damage detection system for concrete structures using Segment Anything Model (SAM) ViT-H. Specialized for rebar corrosion detection with automatic privacy protection.
+
+Key Features:
+• 3-stage intelligent rust detection (HSV → SAM → DBSCAN)
+• Automatic privacy masking for construction signboards
+• Advanced OCR with 4 preprocessing methods
+• Pattern recognition for missed region completion
+• GPU-accelerated batch processing (1.7s/image)
+• High accuracy: 0.99+ detection score
+
+Perfect for infrastructure inspection automation with privacy compliance.
+
+
+Topics/Tags (for GitHub):
+-------------------------
+computer-vision
+deep-learning
+pytorch
+segment-anything
+damage-detection
+infrastructure-inspection
+privacy-protection
+ocr
+pattern-recognition
+cuda
+image-processing
+construction
+civil-engineering
+ai
+automation
+
+
+Website/Homepage:
+-----------------
+(Add your project website or documentation link here)
+
+
+Social Preview Image:
+---------------------
+Recommended: Use results/batch_corrosion_v0.3/kensg-rebarexposureRb_001_rust_combined_privacy.png
+(Shows rust detection with privacy masking - perfect for GitHub social card)
+
+
+Commit Message for README Update:
+---------------------------------
+docs: Add v0.3 documentation with implementation details
+
+- Added English project description and highlights
+- Documented privacy protection features (signboard detection + blur)
+- Added advanced OCR preprocessing methods documentation
+- Included version history with v0.3 release notes
+- Updated batch processing performance metrics (1.70s/image)
+- Added detection improvements (50% signboard detection increase)
+
+Changes:
+- Title: SAM3 Damage Detector MVP → SAM3 Damage Detector v0.3
+- Added "Highlights (v0.3)" section with key improvements
+- Created comprehensive version history section
+- Bilingual support (English descriptions + Japanese technical details)
+
+
+Git Remote Setup Commands:
+---------------------------
+# After creating GitHub repository, run:
+git remote add origin https://github.com/<YOUR_USERNAME>/sam3-damage-detect.git
+git branch -M main
+git push -u origin main
+
+# Tag v0.3 release:
+git tag -a v0.3 -m "Release v0.3: Privacy Protection & Advanced OCR"
+git push origin v0.3

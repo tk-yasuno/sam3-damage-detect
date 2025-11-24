@@ -1,20 +1,29 @@
-# SAM3 Damage Detector MVP
+# SAM3 Damage Detector v0.3
 
-**GPU対応 構造物損傷検出システム**
+**AI-Powered Concrete Structure Damage Detection with Privacy Protection**
 
-GPU 16GB環境に最適化したSAM3ベースの損傷検出MVPです。
+GPU-optimized damage detection system based on Segment Anything Model (SAM) ViT-H, specialized for rebar corrosion detection in concrete structures with automatic privacy masking for construction signboards.
 
-## 🎯 主な機能
+## 🌟 Highlights (v0.3)
 
-- ✅ GPU高速推論（CUDA 11.8対応）
-- ✅ 単一画像 & バッチ処理対応
-- ✅ 自動損傷領域検出（高精度スコア0.99+）
-- ✅ **鉄筋腐食領域の精密検出**（色空間+形状フィルタリング）
-- ✅ **2段階パターン認識検出**（直線配置・等間隔パターン活用）
-- ✅ **プライバシー保護機能**（工事看板自動検出 + ブラーマスク）
-- ✅ **工事看板OCR**（文字抽出、複数前処理手法、精度向上）
-- ✅ 可視化と結果保存
-- ✅ Windows 11 + 既存Python環境対応（Conda不要）
+- 🔍 **Intelligent Rust Detection**: 3-stage detection pipeline (HSV color space → SAM precise masking → DBSCAN pattern recognition)
+- 🎯 **High Accuracy**: Auto-detection score 0.99+, pattern-based completion for missed regions
+- 🔒 **Privacy Protection**: Automatic construction signboard detection and blur masking (Gaussian 51×51)
+- 📝 **Advanced OCR**: Multi-method preprocessing (Otsu, Adaptive, Sauvola) with text validation
+- ⚡ **GPU Acceleration**: CUDA 11.8 optimized, 1.7s/image average processing time
+- 📊 **Batch Processing**: Process multiple images with automatic privacy masking and JSON statistics
+
+## 🎯 Key Features
+
+- ✅ GPU-accelerated inference (CUDA 11.8)
+- ✅ Single image & batch processing
+- ✅ Automatic damage region detection (score 0.99+)
+- ✅ **Precise rebar corrosion detection** (color space + shape filtering)
+- ✅ **2-stage pattern recognition** (linear arrangement + equal spacing)
+- ✅ **Privacy protection** (automatic signboard detection + blur masking)
+- ✅ **Construction signboard OCR** (text extraction, multi-method preprocessing)
+- ✅ Visualization and result saving
+- ✅ Windows 11 + existing Python environment (no Conda required)
 
 ## 🔄 Computation Flow
 
@@ -489,24 +498,75 @@ area: 70px - 2000px     # 錆領域サイズ範囲
 合計: 20領域（目標達成）
 ```
 
-## 📝 次のステップ
+## 📋 Version History
 
-1. **全データセット処理**: 254枚の鉄筋露出画像にバッチ適用
-2. **統計分析**: 検出パターンの傾向分析（間隔・角度分布）
-3. **OCR連携**: 点検ボード情報の自動抽出
-4. **損傷分類**: クラック、鉄筋露出、剥離などの自動分類
-5. **精度評価**: Ground Truthとの比較（IoU計算）
-6. **API化**: FastAPIでWebサービス化
+### v0.3 (2025-01-24) - Privacy Protection & Advanced OCR
 
-## 📄 ライセンス
+**🔒 Privacy Protection**
+- Automatic construction signboard detection using HSV white color detection
+- SAM-based precise masking (10,000-100,000px size range, 2x increased from v0.2)
+- Gaussian blur (51×51) application for location names and addresses
+- Integrated privacy masking in all output pipelines (rust detection + batch processing)
 
-このプロジェクトは研究・教育目的で作成されています。
+**📝 Advanced OCR**
+- Multi-method image preprocessing for OCR accuracy improvement:
+  - Median filter (3×3) + Bilateral filter (9×9) for noise removal
+  - CLAHE (Contrast Limited Adaptive Histogram Equalization)
+  - 4 binarization methods: Otsu, Adaptive Gaussian, Adaptive Mean, Sauvola
+  - 2x resolution upscaling (300 DPI equivalent)
+  - Morphological operations (Opening + Closing)
+- Text validation: 10+ valid characters (Japanese/English regex filtering)
+- False positive elimination with character counting
+- Automatic best method selection based on text length
 
-## 🙏 謝辞
+**⚡ Batch Processing v0.3**
+- Integrated privacy protection in batch mode
+- Processing speed: 1.70s/image average
+- Test results (10 images): 59 rust regions, 9 signboards masked
+- Automatic JSON statistics generation with signboard counts
+
+**🎯 Detection Improvements**
+- Increased signboard max size: 50,000px → 100,000px (2x)
+- Enhanced detection rate: 50% improvement (6→9 signboards in 10 images)
+- Pattern detection error handling with safe dictionary access
+- Size-based filtering: 5,000-100,000px for OCR, 10,000-100,000px for rust detection
+
+**📚 Documentation**
+- English computation flow diagram with 5 phases
+- Privacy protection process documentation
+- Updated project structure with OCR test directory
+- Example outputs with privacy-masked images
+
+### v0.2 - Pattern Recognition & Batch Processing
+- 2-stage pattern recognition (DBSCAN + least squares)
+- Batch processing with HSV color analysis CSV output
+- 254-image dataset processing capability
+- Pattern-based prediction for missed regions
+
+### v0.1 - Initial MVP
+- SAM ViT-H integration with FP32 inference
+- HSV color space rust detection (empirical range)
+- Shape filtering (aspect ratio ≥2.0, area 70-2000px)
+- Single image processing with visualization
+
+## 📝 Next Steps
+
+1. **Full Dataset Processing**: Apply batch v0.3 to all 254 rebar exposure images
+2. **Statistical Analysis**: Pattern trend analysis (spacing/angle distribution)
+3. **OCR Integration**: Automatic inspection board information extraction
+4. **Damage Classification**: Automatic classification of cracks, rebar exposure, spalling
+5. **Accuracy Evaluation**: Comparison with Ground Truth (IoU calculation)
+6. **API Development**: Web service with FastAPI
+
+## 📄 License
+
+This project is created for research and educational purposes.
+
+## 🙏 Acknowledgments
 
 - [Segment Anything (SAM)](https://github.com/facebookresearch/segment-anything) by Meta AI
-- 構造物点検データ提供: 建設省データセット
+- Infrastructure inspection data: Ministry of Land, Infrastructure, Transport and Tourism dataset
 
 ---
 
-**構造物点検業務の自動化と精度向上に貢献します！** 🏗️
+**Contributing to automation and accuracy improvement of infrastructure inspection!** 🏗️
