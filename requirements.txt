@@ -1,0 +1,21 @@
+# SAM3 Damage Detector MVP - Requirements
+# INT8量子化 + FP16推論対応
+
+# PyTorch (CUDA 11.8対応)
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Segment Anything Model
+git+https://github.com/facebookresearch/segment-anything.git
+
+# 画像処理
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# 可視化
+matplotlib>=3.7.0
+numpy>=1.24.0
+
+# その他のユーティリティ
+tqdm>=4.65.0
